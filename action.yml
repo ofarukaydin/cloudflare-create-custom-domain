@@ -13,11 +13,17 @@ inputs:
   account-id:
     description: 'Cloudflare account id'
     required: true
-  domain:
+  name:
     description: 'Custom domain'
     required: true
   operation:
     description: 'Operation to perform'
+    required: true
+  zoneId:
+    description: 'Cloudflare zone id'
+    required: true
+  content:
+    description: 'redirect url'
     required: true
 
 runs:
