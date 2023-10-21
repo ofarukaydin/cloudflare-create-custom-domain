@@ -39,16 +39,13 @@ export async function run(): Promise<void> {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
-          },
-          body: JSON.stringify({
-            name: domain
-          })
+          }
         }
       ).then(res => res.json())
       core.debug(JSON.stringify(res))
 
       if (!res.success) {
-        throw new Error(res.errors[0]?.message)
+        throw new Error(res.errors?.[0]?.message)
       }
     } else {
       throw new Error('Invalid operation')
