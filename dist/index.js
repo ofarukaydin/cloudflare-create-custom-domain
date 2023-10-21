@@ -25669,8 +25669,9 @@ const getCurrentRecordId = async ({ name, token, zoneId }) => {
     const params = new URLSearchParams({
         name
     });
+    core.debug(`making request to: https://api.cloudflare.com/client/v4/zones/${zoneId}/dns_records/?${params.toString()}`);
     try {
-        const res = await fetch(`https://api.cloudflare.com/client/v4/zones/${zoneId}/dns_records/?${params}`, {
+        const res = await fetch(`https://api.cloudflare.com/client/v4/zones/${zoneId}/dns_records/?${params.toString()}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

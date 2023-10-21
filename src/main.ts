@@ -43,10 +43,13 @@ const getCurrentRecordId = async ({
   const params = new URLSearchParams({
     name
   })
+  core.debug(
+    `making request to: https://api.cloudflare.com/client/v4/zones/${zoneId}/dns_records/?${params.toString()}`
+  )
 
   try {
     const res = await fetch(
-      `https://api.cloudflare.com/client/v4/zones/${zoneId}/dns_records/?${params}`,
+      `https://api.cloudflare.com/client/v4/zones/${zoneId}/dns_records/?${params.toString()}`,
       {
         method: 'GET',
         headers: {
