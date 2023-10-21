@@ -27,7 +27,7 @@ export async function run(): Promise<void> {
           })
         }
       ).then(res => res.json())
-
+      core.debug(JSON.stringify(res))
       if (!res.success) {
         throw new Error(res.errors[0]?.message)
       }
@@ -45,6 +45,7 @@ export async function run(): Promise<void> {
           })
         }
       ).then(res => res.json())
+      core.debug(JSON.stringify(res))
 
       if (!res.success) {
         throw new Error(res.errors[0]?.message)
