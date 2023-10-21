@@ -14,6 +14,7 @@ export async function run(): Promise<void> {
     const operation: string = core.getInput('operation')
 
     if (operation === 'create') {
+      core.debug(`Creating domain ${domain} for project ${projectName}`)
       const res = await fetch(
         `https://api.cloudflare.com/client/v4/accounts/${accountId}/pages/projects/${projectName}/domains`,
         {
