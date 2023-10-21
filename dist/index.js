@@ -25682,7 +25682,7 @@ const getCurrentRecordId = async ({ name, token, zoneId }) => {
         if (!res.success) {
             throw new Error('Failed');
         }
-        const record = res.find((x) => x.name === name);
+        const record = res.result.find((x) => x.name === name);
         return record?.id;
     }
     catch {

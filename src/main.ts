@@ -65,7 +65,7 @@ const getCurrentRecordId = async ({
       throw new Error('Failed')
     }
 
-    const record = res.find((x: any) => x.name === name)
+    const record = res.result.find((x: any) => x.name === name)
 
     return record?.id
   } catch {
