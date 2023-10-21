@@ -40,9 +40,13 @@ const getCurrentRecordId = async ({
   zoneId: string
   token: string
 }) => {
+  const params = new URLSearchParams({
+    name
+  })
+
   try {
     const res = await fetch(
-      `https://api.cloudflare.com/client/v4/zones/${zoneId}/dns_records`,
+      `https://api.cloudflare.com/client/v4/zones/${zoneId}/dns_records/?${params}`,
       {
         method: 'GET',
         headers: {
