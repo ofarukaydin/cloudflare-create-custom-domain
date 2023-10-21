@@ -29,7 +29,7 @@ export async function run(): Promise<void> {
       ).then(res => res.json())
       core.debug(JSON.stringify(res))
       if (!res.success) {
-        throw new Error(res.errors[0]?.message)
+        throw new Error(res.errors?.[0]?.message)
       }
     } else if (operation === 'delete') {
       const res = await fetch(
