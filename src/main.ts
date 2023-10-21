@@ -8,7 +8,7 @@ import * as github from '@actions/github'
 export async function run(): Promise<void> {
   try {
     const token: string = core.getInput('token')
-    const projectName: string = core.getInput('project-name')
+    const projectName: string = core.getInput('project')
     const accountId: string = core.getInput('account-id')
     const domain: string = core.getInput('domain')
     const operation: string = core.getInput('operation')

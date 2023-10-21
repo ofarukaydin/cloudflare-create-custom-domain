@@ -7,7 +7,7 @@ inputs:
   token:
     description: 'Cloudflare API token'
     required: true
-  project-name:
+  project:
     description: 'Cloudflare Pages project name'
     required: true
   account-id:
