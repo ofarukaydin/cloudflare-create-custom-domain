@@ -25649,12 +25649,17 @@ async function run() {
     const zoneId = core.getInput('zoneId');
     const content = core.getInput('content');
     if (operation === 'create') {
+        core.debug(`Creating domain ${name} for project ${projectName}`);
         await createRecord({ content, token, zoneId, name });
         await createCustomDomain({ accountId, name, projectName, token });
     }
     else if (operation === 'delete') {
+        core.debug(`Deleting domain ${name} for project ${projectName}`);
         const id = await getCurrentRecordId({ name, token, zoneId });
+        core.debug(`Found record id ${id}, deleting`);
+        core.debug(`Deleting custom dns ${name}`);
         await deleteRecord({ id, token, zoneId });
+        core.debug(`Deleting custom domain ${name}`);
         await deleteCustomDomain({ accountId, name, projectName, token });
     }
     // Set outputs for other workflow steps to use
