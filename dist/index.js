@@ -25643,11 +25643,12 @@ const core = __importStar(__nccwpck_require__(2186));
 async function run() {
     try {
         const token = core.getInput('token');
-        const projectName = core.getInput('project-name');
+        const projectName = core.getInput('project');
         const accountId = core.getInput('account-id');
         const domain = core.getInput('domain');
         const operation = core.getInput('operation');
         if (operation === 'create') {
+            core.debug(`Creating domain ${domain} for project ${projectName}`);
             const res = await fetch(`https://api.cloudflare.com/client/v4/accounts/${accountId}/pages/projects/${projectName}/domains`, {
                 method: 'POST',
                 headers: {
@@ -25658,8 +25659,9 @@ async function run() {
                     name: domain
                 })
             }).then(res => res.json());
+            core.debug(JSON.stringify(res));
             if (!res.success) {
-                throw new Error(res.errors[0]?.message);
+                throw new Error('Failed');
             }
         }
         else if (operation === 'delete') {
@@ -25668,13 +25670,11 @@ async function run() {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${token}`
-                },
-                body: JSON.stringify({
-                    name: domain
-                })
+                }
             }).then(res => res.json());
+            core.debug(JSON.stringify(res));
             if (!res.success) {
-                throw new Error(res.errors[0]?.message);
+                throw new Error('Failed');
             }
         }
         else {
