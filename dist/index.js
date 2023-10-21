@@ -25666,8 +25666,11 @@ async function run() {
 }
 exports.run = run;
 const getCurrentRecordId = async ({ name, token, zoneId }) => {
+    const params = new URLSearchParams({
+        name
+    });
     try {
-        const res = await fetch(`https://api.cloudflare.com/client/v4/zones/${zoneId}/dns_records`, {
+        const res = await fetch(`https://api.cloudflare.com/client/v4/zones/${zoneId}/dns_records/?${params}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
