@@ -1,18 +1,24 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Cloudflare Custom Domain'
+description: 'Adds/delete custom domain to/from cloudflare pages project'
+author: 'Faruk Aydin'
 
 # Define your inputs here.
 inputs:
-  milliseconds:
-    description: 'Your input description here'
+  token:
+    description: 'Cloudflare API token'
     required: true
-    default: '1000'
-
-# Define your outputs here.
-outputs:
-  time:
-    description: 'Your output description here'
+  project-name:
+    description: 'Cloudflare Pages project name'
+    required: true
+  account-id:
+    description: 'Cloudflare account id'
+    required: true
+  domain:
+    description: 'Custom domain'
+    required: true
+  operation:
+    description: 'Operation to perform'
+    required: true
 
 runs:
   using: node20
